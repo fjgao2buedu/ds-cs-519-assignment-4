@@ -93,7 +93,6 @@ function App() {
   };
 
   const callback = (records: IShippingRecord[]) => {
-    console.log("lol");
     console.log(records)
     setRecords(records);
     // do something with value in parent component, like save to state
