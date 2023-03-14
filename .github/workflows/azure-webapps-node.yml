@@ -44,15 +44,14 @@ jobs:
 
     - name: npm install, build, and test
       run: |
-        npm install
         CI=false npm run build --if-present
         npm run test --if-present
 
-    - name: Upload artifact for deployment job
-      uses: actions/upload-artifact@v3
-      with:
-        name: node-app
-        path: .
+#     - name: Upload artifact for deployment job
+#       uses: actions/upload-artifact@v3
+#       with:
+#         name: node-app
+#         path: .
 
   deploy:
     permissions:
@@ -64,10 +63,16 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
-    - name: Download artifact from build job
-      uses: actions/download-artifact@v3
-      with:
-        name: node-app
+#     - name: Download artifact from build job
+#       uses: actions/download-artifact@v3
+#       with:
+#         name: node-app
+        
+    - name: npm install, build, and test
+      run: |
+        npm install
+        CI=false npm run build --if-present
+        npm run test --if-present
 
     - name: 'Deploy to Azure WebApp'
       id: deploy-to-webapp
