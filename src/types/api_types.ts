@@ -16,3 +16,5 @@ export interface IShippingRecord {
   shipmentid: string;
   boxesrcvd: string;
 }
+
+let sql = "SELECT c.id as id,c.Date as date,c.ShipmentID as shipmentid,c.ShipperID as shipperid,c.WarehouseID as warehouseid,c.BoxesRcvd as boxesrcvd,c.ShippingPO as shippingpo FROM c WHERE c.ShipperID = {shipperid}"

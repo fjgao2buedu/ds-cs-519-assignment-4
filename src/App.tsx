@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
 import Grid from "@mui/material/Unstable_Grid2";
-import { MenuItem, Select, SelectChangeEvent, Typography } from "@mui/material";
+import { Input, MenuItem, Select, SelectChangeEvent, Typography } from "@mui/material";
 import { IShippingRecord } from "./types/api_types";
-import SearchBar from "./components/SearchBar";
+// import SearchBar from "./components/SearchBar";
 import { RecordTable } from "./components/RecordTable";
+import { GET_DEFAULT_HEADERS, GET_SHIPPING_DATA } from "./globals";
+import SearchBar from "./components/SearchBar";
 
 function App() {
   // You will need to use more of these!
   // const [classList, setClassList] = useState<IUniversityClass[]>([]);
   const [records, setRecords] = useState<IShippingRecord[]>([]);
+  const [shipperId, setshipperId] = useState<string>("");
   // const [dropdownClassList, setDropdownClassList] = useState<{ label: string, value: string }[]>([{ label: "loading...", value: "loading..." }]);
   // const [selectMessage, setSelectMessage] = useState<string>("loading...");
 
@@ -55,6 +58,46 @@ function App() {
   // const itemSelected = (event: SelectChangeEvent) => {
   //   setCurrClassId(event.target.value);
   // }
+   
+
+  const SearchBarr = () => {
+    useEffect(() => {
+      const timeout = setTimeout(() => {
+        console.log("0shipperId:", shipperId);
+        // fetchRecord(shipperId)
+      }, 1000);
+      return () => clearTimeout(timeout);
+    }, [shipperId]);
+  
+    const fetchRecord = async (shipperid:string) => {
+      var url = GET_SHIPPING_DATA(shipperid)
+      const chaos = await fetch(url, {
+        method: "GET",
+        headers: GET_DEFAULT_HEADERS()
+      })
+        .then(res => res.json())
+        .then(cl => {
+          console.log(cl);
+          setRecords(cl);
+        })
+      return chaos
+    }
+
+    return (
+      <Input
+        value={shipperId}
+        placeholder={"enter shipper id"}
+        onChange={(e) => setshipperId(e.target.value)}
+      />
+    );
+  };
+
+  const callback = (records: IShippingRecord[]) => {
+    console.log("lol");
+    console.log(records)
+    setRecords(records);
+    // do something with value in parent component, like save to state
+}
 
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
@@ -68,9 +111,10 @@ function App() {
           <Typography variant="h4" gutterBottom>
           {process.env.APPLICATION_SECRET}
           {process.env.REACT_APP_SECRET}
+          {process.env.REACT_APP_Shipping_data_api_key}
           </Typography>
           <div style={{ width: "100%" }}>
-            <SearchBar></SearchBar>
+            <SearchBar parentCallback={callback}></SearchBar>
             {/* <Select fullWidth={true}
               label="Class"
               onChange={itemSelected}

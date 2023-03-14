@@ -16,7 +16,7 @@ export const RecordTable = (props: { data: IShippingRecord[] }) => {
     {
       headerName: "Date",
       field: "date",
-      flex: 1,
+      flex: 1.5,
     },
     {
       headerName: "Warehouse ID",
