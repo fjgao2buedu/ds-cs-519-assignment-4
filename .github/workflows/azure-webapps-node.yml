@@ -47,9 +47,8 @@ jobs:
         npm install
         CI=false npm run build 
         npm run test --if-present
-        rm -r public
         rm -r node_modules
-        rm -r src
+        
         
 
     - name: Upload artifact for deployment job
@@ -75,6 +74,10 @@ jobs:
       with:
         name: node-app
 
+    - name: npm install
+      run: |
+        npm install
+        
     - name: 'Deploy to Azure WebApp'
       id: deploy-to-webapp
       uses: azure/webapps-deploy@v2
