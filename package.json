@@ -27,11 +27,12 @@
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
+    "start": "rm -rf node_modules && rm -f package-lock.json && npm cache clean --force && npm install && react-scripts start",
     "build": "CI=false && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "serve": "serve -s ./build"
+    "serve": "serve -s ./build",
+    "begin": "react-scripts start"
   },
   "eslintConfig": {
     "extends": [
