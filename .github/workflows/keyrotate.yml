@@ -16,4 +16,4 @@ jobs:
         uses: azure/CLI@v1
         with:
           inlineScript: |
-            az functionapp function keys set -n chaoscybercats-warehouse-automation-function --function-name HttpTrigger1 --key-name default
+            az functionapp function keys set -g assignment-4-warehouse-automation_group -n chaoscybercats-warehouse-automation-function --function-name HttpTrigger1 --key-name default
