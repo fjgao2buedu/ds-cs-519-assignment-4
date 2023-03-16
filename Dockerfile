@@ -5,6 +5,8 @@ COPY package.json package.json
 COPY package-lock.json package-lock.json
 RUN npm ci
 
+ENV NODE_ENV=production
+
 COPY public/ public
 COPY src/ src
 RUN npm run build
