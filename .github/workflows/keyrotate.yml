@@ -1,0 +1,18 @@
+on:
+  schedule:
+  - cron: "1 0 1 * *"
+
+jobs:
+  keyresurrection:
+    runs-on: ubuntu-latest
+    name: keyresurrection
+    steps:
+      - name: Log in with Azure
+        uses: azure/login@v1
+        with:
+          creds: '${{ secrets.AZURE_CREDENTIALS }}'
+      - name: Azure CLI script
+        uses: azure/CLI@v1
+        with:
+          inlineScript: |
+            az functionapp function keys set -n chaoscybercats-warehouse-automation-function --function-name HttpTrigger1 --key-name default
