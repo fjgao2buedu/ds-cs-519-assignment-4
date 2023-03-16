@@ -1,3 +1,5 @@
+name: rotate key
+
 on:
   workflow_dispatch:
   schedule:
