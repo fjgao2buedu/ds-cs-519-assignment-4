@@ -19,5 +19,5 @@ jobs:
         with:
           inlineScript: |
             az functionapp function keys set -g assignment-4-warehouse-automation_group -n chaoscybercats-warehouse-automation-function --function-name shipping_data --key-name default
-            az webapp config appsettings set -g assignment-4-warehouse-automation_group -n chaoscybercats-warehouse-automation --settings REACT_APP_Shipping_data_api_key=@Microsoft.KeyVault(SecretUri=https://chaoscybercats-keyvault.vault.azure.net/secrets/function--shipping-095data--default)
+            az webapp config appsettings set -g assignment-4-warehouse-automation_group -n chaoscybercats-warehouse-automation --settings REACT_APP_Shipping_data_api_key="@Microsoft.KeyVault(SecretUri=https://chaoscybercats-keyvault.vault.azure.net/secrets/function--shipping-095data--default)"
             az webapp restart -g assignment-4-warehouse-automation_group -n chaoscybercats-warehouse-automation
