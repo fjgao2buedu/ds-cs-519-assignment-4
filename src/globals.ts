@@ -13,7 +13,7 @@ export const GET_SHIPPING_DATA = (shipperid: string) => {
 }
 
 // You can get this from Piazza
-export const TOKEN = process.env.REACT_APP_Shipping_data_api_key||"vAeF39zvULVjTaB8sBxTxJRzZ3LQGl2QeVDBtikEHnEMAzFuQEC94w==";
+export const TOKEN = process.env.REACT_APP_Shipping_data_api_key||"";
 
 // This is a helper function to generate the headers with the x-functions-key attached
 export const GET_DEFAULT_HEADERS = () => {

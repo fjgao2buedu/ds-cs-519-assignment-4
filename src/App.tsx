@@ -107,10 +107,10 @@ function App() {
           </Typography>
         </Grid>
         <Grid xs={12} md={4}>
-          <Typography variant="h4" gutterBottom>
-          {process.env.APPLICATION_SECRET}
+          <Typography variant="h4" gutterBottom>Search
+          {/* {process.env.APPLICATION_SECRET}
           {process.env.REACT_APP_SECRET}
-          {process.env.REACT_APP_Shipping_data_api_key}
+          {process.env.REACT_APP_Shipping_data_api_key} */}
           </Typography>
           <div style={{ width: "100%" }}>
             <SearchBar parentCallback={callback}></SearchBar>
@@ -129,7 +129,7 @@ function App() {
         </Grid>
         <Grid xs={12} md={8}>
           <Typography variant="h4" gutterBottom>
-            Final Grades
+            Shipping Records
           </Typography>
           <div style={{ height: 600, width: '100%' }}>
             {/* Place the grade table here */}
